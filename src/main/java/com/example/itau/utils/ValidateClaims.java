@@ -2,14 +2,19 @@ package com.example.itau.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ValidateClaims {
+
+    private static final Logger logger = LoggerFactory.getLogger(ValidateClaims.class);
 
     public boolean validateClaims(String token){
 
         try {
 
             DecodedJWT decodeJWT = JWT.decode(token);
+            logger.info("token decodificado", decodeJWT);
 
             if (decodeJWT.getClaims().size() != 3) {
                 return false;
@@ -22,22 +27,24 @@ public class ValidateClaims {
 
 
             if (name == null || name.length() > 256 || name.chars().anyMatch(Character::isDigit)) {
+                logger.info("Claim nome é maior que 256 caracteres", name);
                 return false;
             }
 
             if (role == null || !role.matches("Admin|Member|External")) {
+                logger.info("Claim role possui valor inválido", role);
                 return false;
             }
 
             if (seed == null || !isPrime(seed)) {
+                logger.info("Claim seed não é um número primo", seed);
                 return false;
             }
-
+            logger.info("Token analisado", token);
             return true;
 
         } catch (Exception e) {
-            System.err.println("Erro ao validar o token: " + e.getMessage());
-            e.printStackTrace();
+            logger.error("Erro ao validar o token",e.getMessage());
             return false;
         }
 
