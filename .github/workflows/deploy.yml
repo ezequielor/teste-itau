@@ -34,4 +34,4 @@ jobs:
             - name: Remove docker container
               run: docker rm -f itau
             - name: Run docker container
-              run: docker run -d -p 8080:8080 --name ditau zakkbr/itau
+              run: docker run -d -p 8080:8080 --name itau zakkbr/itau

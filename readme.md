@@ -50,6 +50,7 @@ Classe utilitária que realiza a validação real das reivindicações no token 
    - o mesmo contem configuração do github actions para fazer deploy em uma EC2 na AWS
    - existe um repositorio que pode ser clonado para montar uma EC2 na AWS utilizando Scripts Terraform e Github Actions: https://github.com/ezequielor/infra-itau.git
    - o mesmo foi exposto na AWS no seguinte endereço: http://3.224.63.121:8080/swagger-ui/index.html
+   - link para collections via AWS: https://www.postman.com/zakkbr/workspace/teste-itau/collection/37307811-7f262eb8-bc5e-4da5-af37-d38fc7c5dd28
 
 
 
